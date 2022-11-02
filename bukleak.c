@@ -1,13 +1,10 @@
-int main()
-{
-    printf("Zein programa exekutatu nahi duzu?\n");
-    printf("1. Faktoriala\n");
-    printf("2. Biderketa taulak\n");
-    printf("3. Fibonacci\n");
-}
+#include <stdio.h>
+#include <math.h>
+
 // 1. ariketa
-void batura()
+void batura(void)
 {
+    // 1 + 2 + 3 + ... + (n - 1) + n
     printf("Zein zenbaki arte nahi duzu kontatu?");
     int max;
     scanf("%d", &max);
@@ -75,11 +72,9 @@ void fibonacci()
     }
 }
 
-int ZKH()
+int ZKH(int a, int b)
 {
-    int a, b;
-    printf("Sartu 2 zenbaki koma batekin separatuta:");
-    scanf("%d,%d", &a, &b);
+    // Euclides-en algoritmoaren aplikazioa
 
     while (b > 0)
     {
@@ -92,8 +87,6 @@ int ZKH()
             b = b - a;
         }
     }
-
-    printf("ZKH: %d", a);
     return a;
 }
 
@@ -135,13 +128,10 @@ void zifrakZenbatu()
     printf("Zure zenbakiak dituen zifrak: %d", kontadorea);
 }
 
+// Alderantziz funtzioa zenbaki kapikuak konprobatzeko ere erabiltzen denez funtzio bat dedikatu zaio.
 int alderantziz(int znbk)
 {
     int emaitza = 0, hondarra = 0;
-
-    printf("Sartu zenbakia: ");
-    scanf("%d", &znbk);
-
     while (znbk != 0)
     {
         hondarra = znbk % 10;
@@ -196,13 +186,34 @@ void kapikuaDa()
     printf("Zenbakia ez da kapikua :(");
 }
 
-int lehenaDa()
+int lehenaDa(int znbk)
 {
+    // Zenbaki bat lehena izateko 1 eta bere buruagatik bakarrik zatigarria izan behar da.
+    for (int i = 2; i < znbk; i++)
+    {
+        // Hondarra zero bada, zatigarri bat aurkitu dugu, beraz ez da zenbaki lehena.
+        if (znbk % i == 0)
+        {
+            return 0;
+        }
+    }
+    // Bukle osoa egin ostean programak ez badu zatigarri bat aurkitu, egia (1) itzuliko dugu.
+    return 1;
 }
 
 // 11. Ariketa
 void lehenaZehatza()
 {
+    int znbk;
+    printf("Sartu zure zenbakia: ");
+    scanf("%d", &znbk);
+
+    if (lehenaDa(znbk))
+    {
+        printf("\nZenbakia lehena da.");
+        return;
+    }
+    printf("\nZenbakia ez da lehena.");
 }
 // 12. Ariketa
 void lehenaTartea()
@@ -210,7 +221,7 @@ void lehenaTartea()
     int min, max;
     printf("Sartu zenbaki tarte bat koma batekin separatuta [min,max]: ");
     scanf("%d,%d", &min, &max);
-    printf("\nTarte honetan zenbaki lehenak:\n");
+    printf("\nTarte honetan aurkitutako zenbaki lehenak:\n");
     for (int i = min; i < max; i++)
     {
         if (lehenaDa(i))
@@ -220,13 +231,10 @@ void lehenaTartea()
     }
 }
 
-int amstrongDa()
+int armstrongDa(int znbk)
 {
-    int znbk, znbkTemp, remainder, zifrak = 0;
+    int znbkTemp, hondarra, zifrak = 0;
     float result = 0.0;
-
-    printf("Sartu zenbakia: ");
-    scanf("%d", &znbk);
 
     znbkTemp = znbk;
 
@@ -239,35 +247,47 @@ int amstrongDa()
 
     for (znbkTemp = znbk; znbkTemp != 0; znbkTemp /= 10)
     {
-        remainder = znbkTemp % 10;
-        result += pow(remainder, zifrak);
+        hondarra = znbkTemp % 10;
+        // Zifra bakoitza bere n-garren potentziara igo behar dugu (non n zenbakiaren zifra kopurua den) eta dena batu.
+        result += pow(hondarra, zifrak);
     }
 
+    // Batura hasierako zenbakiaren berdina bada Armstrong zenbakia da.
     if ((int)result == znbk)
     {
-        printf("Amstrong zenbakia da");
+        return 1;
     }
     else
     {
-        printf("Ez da amstrong zenbakia");
+        return 0;
     }
 }
 
 // 13. Ariketa
-void amstrongZehatza()
+void armstrongZehatza()
 {
+    int znbk;
+    printf("Sartu zenbakia: ");
+    scanf("%d", &znbk);
+
+    if (armstrongDa(znbk))
+    {
+        printf("\nArmstrong-en zenbakia da");
+        return;
+    }
+    printf("\nEz da Armstrong-en zenbakia");
 }
 
 // 14. Ariketa
-void amstrongTartea()
+void armstrongTartea()
 {
     int min, max;
     printf("Sartu zenbaki tarte bat koma batekin separatuta [min,max]: ");
     scanf("%d,%d", &min, &max);
-    printf("\nTarte honetan amstrong zenbakiak:\n");
+    printf("\nTarte honetan armstrong zenbakiak:\n");
     for (int i = min; i < max; i++)
     {
-        if (amstrongDa(i))
+        if (armstrongDa(i))
         {
             printf("%d,", i);
         }
@@ -275,12 +295,12 @@ void amstrongTartea()
 }
 
 // 15. Ariketa
-void faktoreakBistaratu()
+void faktoreakBistaratu(void)
 {
     int znbk;
     printf("Sartu zenbaki bat: ");
     scanf("%d", &znbk);
-    printf("Factors of %d are: ", znbk);
+    printf("%d-en faktoreak hauek dira: ", znbk);
     for (int i = 1; i <= znbk; ++i)
     {
         if (znbk % i == 0)
@@ -288,4 +308,79 @@ void faktoreakBistaratu()
             printf("%d ", i);
         }
     }
+}
+
+int main()
+{
+    printf("Zein programa exekutatu nahi duzu?\n");
+    printf("1. Batura\n");
+    printf("2. Faktoriala\n");
+    printf("3. Biderketa taulak\n");
+    printf("4. Fibonacci\n");
+    printf("5. Zatiki komun handiena\n");
+    printf("6. Multiplo komun txikiena\n");
+    printf("7. Zifrak zenbatu\n");
+    printf("8. Zenbakia alderantzizkatu\n");
+    printf("9. Potentzia kalkulatu\n");
+    printf("10. Kapikua da?\n");
+    printf("11. Zenbaki lehena da?\n");
+    printf("12. Zenbaki lehenak tarte batean\n");
+    printf("13. Armstrongen zenbaki bat da?\n");
+    printf("14. Armstrongen zenbakiak tarte batean\n");
+    printf("15. Faktoreak atera\n");
+
+    int aukera;
+    scanf("%d", &aukera);
+    printf("\n%d. programa exekutatzen...\n");
+    switch (aukera)
+    {
+    case 1:
+        batura();
+        break;
+    case 2:
+        faktoriala();
+        break;
+    case 3:
+        biderketaTaulak();
+        break;
+    case 4:
+        fibonacci();
+        break;
+    case 5:
+        zatikiKomunHandiena();
+        break;
+    case 6:
+        multiploKomunTxikiena();
+        break;
+    case 7:
+        zifrakZenbatu();
+        break;
+    case 8:
+        zenbakiaAlderantzizkatu();
+        break;
+    case 9:
+        potentzia();
+        break;
+    case 10:
+        kapikuaDa();
+        break;
+    case 11:
+        lehenaZehatza();
+        break;
+    case 12:
+        lehenaTartea();
+        break;
+    case 13:
+        armstrongZehatza();
+        break;
+    case 14:
+        armstrongTartea();
+        break;
+    case 15:
+        faktoreakBistaratu();
+        break;
+    default:
+        printf("Programa hori ez da aurkitu, irtetzen...");
+    }
+    printf("\n");
 }
