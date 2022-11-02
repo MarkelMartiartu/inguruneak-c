@@ -136,34 +136,19 @@ void karratua()
   {
     for (int w = 0; w < luzeera; w++)
     {
-      if (h == 0 || h == (luzeera - 1) || (w == 0 || w == (luzeera - 1))) // Hau egia bada karratuaren ertz baten dago kokatuta, adibidez (0,0) edo (2,0). "*" inprimatuko dugu beraz.
       {
-        printf("*");
+        // Hau egia bada karratuaren ertz baten dago kokatuta, adibidez (0,0) edo (2,0). "*" inprimatuko dugu beraz.
+        if (h == 0 || h == (luzeera - 1) || (w == 0 || w == (luzeera - 1)))
+        {
+          printf("*");
+        }
+        else
+        {
+          printf("?");
+        }
       }
-      else
-      {
-        printf("?");
-      }
+      printf("\n");
     }
-    printf("\n");
-  }
-}
-
-void triangulua()
-{
-  int altuera;
-  printf("Zein altueratakoa egingo dugu triangelua?: ");
-  scanf("%d", &altuera);
-  printf("triangelua eraikitzen...\n\n");
-
-  if (altuera % 2 == 0)
-  {
-    printf("Triangelua ez da polita geldituko altuera bakoitia ez bada :(");
-    return;
-  }
-
-  for (int i = 0; i < altuera; i++)
-  {
   }
 }
 
@@ -187,12 +172,15 @@ int bikoitiaDa(int i)
   return 0;
 }
 
-//Sartu letra larriz karaktere bat
-int bokalaDa(char c) {
-  if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+// Sartu letra larriz karaktere bat
+int bokalaDa(char c)
+{
+  if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+  {
     return 1;
   }
-  else {
+  else
+  {
     return 0;
   }
 }
@@ -210,21 +198,27 @@ void handiena()
     printf("%d da handiena", c);
 }
 
-int bisiestoaDa(int urtea) {
-  if (urtea % 4 == 0) {
+int bisiestoaDa(int urtea)
+{
+  if (urtea % 4 == 0)
+  {
     return 1;
   }
   return 0;
 }
 
-void zenbakiMota(int i) {
-  if (i > 0) {
+void zenbakiMota(int i)
+{
+  if (i > 0)
+  {
     printf("positiboa da");
   }
-  else if (i< 0) {
+  else if (i < 0)
+  {
     printf("negatiboa da");
   }
-  else {
+  else
+  {
     printf("zero da");
   }
 }
