@@ -125,11 +125,6 @@ int bikoitiaDa()
   return 0;
 }
 
-void bokalaEdoKontsonantea()
-{
-  // Aurrekoaren oso antzerakoa da.
-}
-
 void karratua()
 {
   int luzeera;
