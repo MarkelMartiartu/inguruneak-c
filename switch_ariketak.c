@@ -1,13 +1,12 @@
 #include <stdio.h>
-// if: 4
-// switch: 5
-// bukleak: 3
 
 int bokalaDa()
 {
-    printf("Tekleatu letra bat:\n");
+    printf("Tekleatu letra bat: ");
     char letra;
-    scanf("%c", &letra);
+    // \n barik ez du funtzionatzen
+    scanf("\n%c", &letra);
+
     switch (letra)
     {
     case 'A':
@@ -20,9 +19,12 @@ int bokalaDa()
     case 'i':
     case 'o':
     case 'u':
-        return 1;
+
+        printf("Karaktere hori bokal bat da.");
+        return;
     default:
-        return 0;
+        printf("Karaktere hori ez da bokal bat.");
+        return;
     }
 }
 
@@ -79,9 +81,9 @@ void egunKopurua()
     case 1:
     case 3:
     case 5:
-    case 7:
-    case 9:
-    case 11:
+    case 8:
+    case 10:
+    case 12:
         printf("31 egun ditu.");
         break;
     case 2:
@@ -103,8 +105,10 @@ int handiena()
     switch (handiagoa)
     {
     case (0):
+        printf("%d da handiena", b);
         return b;
     case (1):
+        printf("%d da handiena", a);
         return a;
     }
 }
@@ -125,3 +129,38 @@ void bakoitiaEdoBikoitia()
     }
 }
 
+int main()
+{
+    printf("Zein programa exekutatu nahi duzu?\n");
+    printf("1. Bokala da?\n");
+    printf("2. Asteko eguna\n");
+    printf("3. Hilearen egun kopurua\n");
+    printf("4. Zenbaki handiena\n");
+    printf("5. Bakoitia edo bikoitia\n");
+
+    int aukera;
+    scanf("%d", &aukera);
+    printf("\n%d. programa exekutatzen...\n");
+    switch (aukera)
+    {
+    case 1:
+        bokalaDa();
+        break;
+    case 2:
+        astekoEguna();
+        break;
+
+    case 3:
+        egunKopurua();
+        break;
+    case 4:
+        handiena();
+        break;
+    case 5:
+        bakoitiaEdoBikoitia();
+        break;
+    default:
+        printf("Programa hori ez da aurkitu, irtetzen...");
+    }
+    printf("\n");
+}
