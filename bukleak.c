@@ -5,8 +5,8 @@ int main()
     printf("2. Biderketa taulak\n");
     printf("3. Fibonacci\n");
 }
-// 1 ariketa
-void batuketa()
+// 1. ariketa
+void batura()
 {
     printf("Zein zenbaki arte nahi duzu kontatu?");
     int max;
@@ -21,6 +21,7 @@ void batuketa()
     printf("\nGuztira: %d", batura);
 }
 
+// 2. ariketa
 int faktoriala()
 {
     int c, zenbakia, fakt = 1;
@@ -36,7 +37,7 @@ int faktoriala()
     return fakt;
 }
 
-// 2. Ariketa
+// 3. Ariketa
 void biderketaTaulak()
 {
     printf("Biderketa taula sortzen, itxaron pixka bat, honek ordu batzuk behar ditzake...\n");
@@ -50,7 +51,7 @@ void biderketaTaulak()
     }
 }
 
-// 3. Ariketa
+// 4. Ariketa
 void fibonacci()
 {
     int max, n1 = 0, n2 = 1, n3;
@@ -74,7 +75,6 @@ void fibonacci()
     }
 }
 
-// 4. Ariketa
 int ZKH()
 {
     int a, b;
@@ -83,7 +83,6 @@ int ZKH()
 
     while (b > 0)
     {
-
         if (a > b)
         {
             a = a - b;
@@ -195,4 +194,98 @@ void kapikuaDa()
     }
 
     printf("Zenbakia ez da kapikua :(");
+}
+
+int lehenaDa()
+{
+}
+
+// 11. Ariketa
+void lehenaZehatza()
+{
+}
+// 12. Ariketa
+void lehenaTartea()
+{
+    int min, max;
+    printf("Sartu zenbaki tarte bat koma batekin separatuta [min,max]: ");
+    scanf("%d,%d", &min, &max);
+    printf("\nTarte honetan zenbaki lehenak:\n");
+    for (int i = min; i < max; i++)
+    {
+        if (lehenaDa(i))
+        {
+            printf("%d,", i);
+        }
+    }
+}
+
+int amstrongDa()
+{
+    int znbk, znbkTemp, remainder, zifrak = 0;
+    float result = 0.0;
+
+    printf("Sartu zenbakia: ");
+    scanf("%d", &znbk);
+
+    znbkTemp = znbk;
+
+    // Zifra kopurua kalkulatu
+    while (znbkTemp != 0)
+    {
+        znbkTemp /= 10;
+        zifrak++;
+    }
+
+    for (znbkTemp = znbk; znbkTemp != 0; znbkTemp /= 10)
+    {
+        remainder = znbkTemp % 10;
+        result += pow(remainder, zifrak);
+    }
+
+    if ((int)result == znbk)
+    {
+        printf("Amstrong zenbakia da");
+    }
+    else
+    {
+        printf("Ez da amstrong zenbakia");
+    }
+}
+
+// 13. Ariketa
+void amstrongZehatza()
+{
+}
+
+// 14. Ariketa
+void amstrongTartea()
+{
+    int min, max;
+    printf("Sartu zenbaki tarte bat koma batekin separatuta [min,max]: ");
+    scanf("%d,%d", &min, &max);
+    printf("\nTarte honetan amstrong zenbakiak:\n");
+    for (int i = min; i < max; i++)
+    {
+        if (amstrongDa(i))
+        {
+            printf("%d,", i);
+        }
+    }
+}
+
+// 15. Ariketa
+void faktoreakBistaratu()
+{
+    int znbk;
+    printf("Sartu zenbaki bat: ");
+    scanf("%d", &znbk);
+    printf("Factors of %d are: ", znbk);
+    for (int i = 1; i <= znbk; ++i)
+    {
+        if (znbk % i == 0)
+        {
+            printf("%d ", i);
+        }
+    }
 }
