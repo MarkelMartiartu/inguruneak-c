@@ -38,12 +38,12 @@ int faktoriala()
 void biderketaTaulak()
 {
     printf("Biderketa taula sortzen, itxaron pixka bat, honek ordu batzuk behar ditzake...\n");
-    for (int lehena = 0; lehena < 10; lehena++)
+    for (int lehena = 1; lehena <= 10; lehena++)
     {
-        printf("%d-en taula:\n", lehena + 1);
-        for (int bigarrena = 0; bigarrena < 10; bigarrena++)
+        printf("%d-en taula:\n", lehena);
+        for (int bigarrena = 1; bigarrena <= 10; bigarrena++)
         {
-            printf("%dx%d = %d\n", lehena + 1, bigarrena + 1, (lehena + 1) * (bigarrena + 1));
+            printf("%dx%d = %d\n", lehena, bigarrena, lehena * bigarrena);
         }
     }
 }
